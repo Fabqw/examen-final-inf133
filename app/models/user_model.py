@@ -17,15 +17,15 @@ class User(UserMixin, db.Model):
     #role: Rol del usuario (admin, customer). De tipo cadena de texto.
 
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(50), unique=True, nullable=False)
     name = db.Column(db.String(50), unique=True, nullable=False)
+    email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
     phone = db.Column(db.String(50), primary_key=True)
     role = db.Column(db.String(50), nullable=False)
 
     def __init__(self, email, name,password, phone, role):
-        self.email = email
         self.name = name
+        self.email = email
         self.password = generate_password_hash(password)
         self.phone = phone
         self.role = role
